@@ -9,35 +9,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *fa = *head;
-	listint_t *sl = *head;
-	listint_t *pr = NULL;
-	listint_t *tem;
-
-	if (*head == NULL || (*head)->next == NULL)
+	if (head == NULL || *head == NULL)
 	{
 		return (1);
 	}
-	while (fa != NULL && fa->next == NULL)
+	return (che_p(head, *head));
+}
+/**
+ * che_p - check if palindrome
+ * @head: ptr to start
+ * @last: ptr to end
+ * Return: 0
+ */
+int che_p(listint_t **head, listint_t *last)
+{
+	if (last == NULL)
 	{
-		fa = fa->next->next;
-		tem = sl->next;
-		sl->next = pr;
-		pr = sl;
-		sl = tem;
+		return (NULL);
 	}
-	if (fa != NULL)
+	if (che_p(head, last->next) && (*head)->n == last->n)
 	{
-		sl = sl->next;
+		*head = (*head)->next;
+		return (1);
 	}
-	while (pr != NULL)
-	{
-		if (pr->n != sl->n)
-		{
-			return (0);
-		}
-		pr = pr->next;
-		sl = sl->next;
-	}
-	return (1);
+	return (0);
 }
