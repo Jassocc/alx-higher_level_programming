@@ -25,7 +25,7 @@ int che_p(listint_t **head, listint_t *last)
 {
 	if (last == NULL)
 	{
-		return (NULL);
+		return (1);
 	}
 	if (che_p(head, last->next) && (*head)->n == last->n)
 	{
