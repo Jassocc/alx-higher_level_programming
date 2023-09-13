@@ -33,7 +33,7 @@ void print_python_bytes(PyObject *p)
 void print_python_list(PyObject *p)
 {
 	Py_ssize_t s, a;
-	PyObject *try
+	PyObject *try;
 
 	s = ((PyVarObject *)p)->ob_size;
 	printf("[*] Python list info\n");
@@ -43,7 +43,7 @@ void print_python_list(PyObject *p)
 	{
 		try = ((PyListObject *)p)->ob_item[a];
 		printf("Element %ld: %s\n", a, ((PyObject *)try)->ob_type->tp_name);
-		if (PyBytes_check(try))
+		if (PyBytes_Check(try))
 			print_python_bytes(try);
 	}
 }
