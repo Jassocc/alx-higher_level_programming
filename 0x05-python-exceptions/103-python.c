@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include <Python.h>
+void print_python_list(PyObject *p);
+void print_python_bytes(PyObject *p);
+void print_python_float(PyObject *p);
+
 /**
  * print_python_list - prints list of python
  * @p: object to print
@@ -83,7 +87,7 @@ void print_python_bytes(PyObject *p)
 void print_python_float(PyObject *p)
 {
 	char *buff = NULL;
-	PyFloatObject *f = (PyFloatObject *)p;
+	PyFloatObject *fl = (PyFloatObject *)p;
 
 	fflush(stdout);
 	printf("[.] float object info\n");
