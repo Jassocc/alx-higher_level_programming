@@ -5,6 +5,7 @@ define maguic class
 """
 import math
 
+
 class MagicClass:
     """
     definition of MAgic Class
