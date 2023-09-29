@@ -1,0 +1,55 @@
+Test cases for task 1 the matrix file
+>>> import doctest
+
+doctest.run_docstring_examples(matrix_divided, None, optionflags=doctest.ELLIPSIS, verbose=True)
+# doctest: +ELLIPSIS
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+>>> matrix_divided([[1, 2, 3], [4, 5, 'a']], 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/root/alx-higher_level_programming/0x07-python-test_driven_development/2-matrix_divided.py", line 25, in matrix_divided
+    raise TypeError("matrix must be a matrix "
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[1, 2, 3], [4, 5]], 2)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+>>> matrix_divided("matrix", 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], "2")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], -2)
+[[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+>>> matrix_divided([[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]], 2.5)
+[[0.6, 1.0, 1.4], [1.8, 2.2, 2.6]]
+>>> matrix_divided([[1.5, 2.5, 3.5], [4.5, 5.5, 6.5]], 2.)
+[[0.75, 1.25, 1.75], [2.25, 2.75, 3.25]]
+>>> matrix_divided([[0, 0, 0], [0, 0, 0]], 1)
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+>>> matrix_divided([[0, 0], [0, 0,]], 1)
+[[0.0, 0.0], [0.0, 0.0]]
+>>> matrix_divided([], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([[-1, -2, -3], [-4, -5, -6]], 2)
+[[-0.5, -1.0, -1.5], [-2.0, -2.5, -3.0]]
+>>> matrix_divided([[-1000, -20000, -3000], [-4000, -5000, -6000]], 2)
+[[-500.0, -10000.0, -1500.0], [-2000.0, -2500.0, -3000.0]]
+>>> matrix_divided([[1000, 20000, 3000], [4000, 5000, 6000]], 2)
+[[500.0, 10000.0, 1500.0], [2000.0, 2500.0, 3000.0]]
+>>> matrix_divided([[1.5, 2, 3], [4.5, 5.5, 6]], 2)
+[[0.75, 1.0, 1.5], [2.25, 2.75, 3.0]]
