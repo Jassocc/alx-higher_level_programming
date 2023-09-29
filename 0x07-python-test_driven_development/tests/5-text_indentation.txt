@@ -1,0 +1,75 @@
+# Module 5 text_indentation
+
+>>> import doctest
+
+# doctest +ELLIPSIS
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+
+>>> text_indentation("        HEy     \n    .       ")
+HEy     
+    .
+<BLANKLINE>
+>>> text_indentation("        HEy       ")
+HEy
+>>> text_indentation("Hello. How are you?")
+Hello.
+<BLANKLINE>
+How are you?
+>>> text_indentation("Whatsupp? is there something you need. like a list of:")
+Whatsupp?
+<BLANKLINE>
+is there something you need.
+<BLANKLINE>
+like a list of:
+>>> text_indentation("MUltiple... Ellipsis? Yes...")
+MUltiple.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+Ellipsis?
+<BLANKLINE>
+Yes.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+>>> text_indentation("HEy    \n     .")
+HEy    
+     .
+>>> text_indentation("HEy    \n     .      ")
+HEy    
+     .
+<BLANKLINE>
+>>> text_indentation("     Hello      ")
+Hello
+>>> text_indentation(12)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(12.5)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation()
+Traceback (most recent call last):
+...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+>>> text_indentation("         ")
+
+>>> text_indentation("awe ")
+awe
+>>> text_indentation("awe? ")
+awe?
+<BLANKLINE>
+>>> text_indentation("awe? Hoe gaan dit my bra. Is jy Okay? ek het n lang lys van brannas en bier: ")
+awe?
+<BLANKLINE>
+Hoe gaan dit my bra.
+<BLANKLINE>
+Is jy Okay?
+<BLANKLINE>
+ek het n lang lys van brannas en bier:
+<BLANKLINE>
