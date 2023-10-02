@@ -77,13 +77,7 @@ class Rectangle:
         """
         if self.__width == 0 or self.height == 0:
             return ""
-        res = ""
-        for a in range(self.__height):
-            res += '#' * self.__width + '\n'
-        return res.rstrip('\n')
-
-    def __repr__(self):
-        """
-        returns the rectangle in #
-        """
-        return ('<{}-{} object at {}>'.format(self.__width, self.__height, hex(id(self))))
+        vals = ""
+        for ro in range(self.__height):
+            vals += "#" * self.__width + "\n"
+        return vals
