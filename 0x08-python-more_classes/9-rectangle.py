@@ -81,7 +81,7 @@ class Rectangle:
         """
         if self.__height == 0 or self.__width == 0:
             return ""
-        vals = "\n".join([str(Rectangle.print_symbol) * self.__width
+        vals = "\n".join([str(self.print_symbol) * self.__width
                          for rom in range(self.__height)])
         return vals
 
@@ -108,7 +108,7 @@ class Rectangle:
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        return rect_1 if rect_1.area() >= rect_2.area() else rect_2
+        return rect_1 if rect_1.area() > rect_2.area() else rect_2
 
     @classmethod
     def square(cls, size=0):
