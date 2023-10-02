@@ -75,7 +75,7 @@ class Rectangle:
         """
         prints the #'s
         """
-        if self.__width == 0 or self.height == 0:
+        if self.__width == 0 or self.__height == 0:
             return ""
         vals = ""
         for ro in range(self.__height):
