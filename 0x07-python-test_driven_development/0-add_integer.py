@@ -4,6 +4,8 @@ Module adds 2 integers and or floats together
 A must be an int or float
 B must be an int or float/ B has a default value of 98
 """
+
+
 def add_integer(a, b=98):
     """
     add_integer should return a + b as integers although

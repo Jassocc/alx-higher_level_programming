@@ -8,7 +8,7 @@ size, lists and rows mus tbe the same
 
 def matrix_mul(m_a, m_b):
     """
-    matrix multiplciation 
+    matrix multiplciation
     """
     if not isinstance(m_a, list):
         raise TypeError("m_a must be a list")
@@ -31,7 +31,7 @@ def matrix_mul(m_a, m_b):
         if len(er) != len(m_a[0]):
             raise TypeError("each row of m_a must be of the same size")
         if len(er) != len(m_b):
-            raise ValueError ("m_a and m_b can't be multiplied")
+            raise ValueError("m_a and m_b can't be multiplied")
     for er in m_b:
         for a in er:
             if not isinstance(a, (int, float)):

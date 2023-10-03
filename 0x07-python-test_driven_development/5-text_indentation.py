@@ -18,7 +18,7 @@ def text_indentation(text):
     li = []
     line = ''
     for char in text:
-        line +=char
+        line += char
         if char in chars_split:
             li.append(line.strip())
             line = ''

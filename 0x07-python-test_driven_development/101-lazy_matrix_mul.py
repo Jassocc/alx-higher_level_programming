@@ -6,6 +6,7 @@ Use numpy module
 """
 import numpy
 
+
 def lazy_matrix_mul(m_a, m_b):
     """
     multiply m_a and _mb
