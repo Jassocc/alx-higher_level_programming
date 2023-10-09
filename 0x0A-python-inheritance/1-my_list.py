@@ -17,4 +17,4 @@ class MyList(list):
         asc order
         """
         a = sorted(self)
-        print(":d".format(a))
+        print("{:d}".format(a))
