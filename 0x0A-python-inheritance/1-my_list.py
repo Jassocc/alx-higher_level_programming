@@ -12,7 +12,7 @@ class MyList(list):
     from the class known as list
     """
     def __init__(self, *args):
-        super().__init__(args)
+        super().__init__(*args)
 
     def print_sorted(self):
         """
