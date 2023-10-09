@@ -10,5 +10,5 @@ def lookup(obj):
     """
     function that returns a list object
     """
-    a = dir(obj);
+    a = dir(obj)
     return a
