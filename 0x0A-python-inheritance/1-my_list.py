@@ -12,6 +12,9 @@ class MyList(list):
     from the class known as list
     """
     def __init__(self):
+        """
+        iniatitalize class
+        """
         super().__init__()
 
     def print_sorted(self):
