@@ -16,5 +16,4 @@ class MyList(list):
         function that prints the list in
         asc order
         """
-        a = (sorted(self))
-        print(a)
+        print(sorted(self))
