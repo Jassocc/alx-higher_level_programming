@@ -1,0 +1,39 @@
+#Module 1 test case
+
+>>> import doctest
+
+# doctest +ELLIPSIS
+
+>>> MyList = __import__('1-my_list').MyList
+
+>>> MyList = __import__('1-my_list').MyList
+>>> my_list = MyList([1, 4, 2, 3, 5, 7])
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5, 7]
+>>> empty_list = MyList([])
+>>> empty_list.print_sorted()
+[]
+>>> single_elem = MyList([12])
+>>> single_elem.print_sorted()
+[12]
+>>> ident_elem = MyList([1, 1, 1, 1, 1,])
+>>> ident_elem.print_sorted()
+[1, 1, 1, 1, 1]
+>>> neg_case = MyList([-2, -3, -4, -5, -89])
+>>> neg_case.print_sorted()
+[-89, -5, -4, -3, -2]
+>>> zero_elem = MyList([0, 0, 0, 0])
+>>> zero_elem.print_sorted()
+[0, 0, 0, 0]
+>>> type((MyList))
+<class 'type'>
+>>> type(MyList())
+<class '1-my_list.MyList'>
+>>> isinstance(MyList, object)
+True
+>>> isinstance(MyList, list)
+False
+>>> issubclass(MyList, list)
+True
+>>> 'print_sorted' in dir(MyList)
+True
