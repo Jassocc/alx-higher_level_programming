@@ -1,0 +1,63 @@
+#modue 7 test case
+
+>>> import doctest
+
+# doctest +ELLIPSIS
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+>>> Base_g = BaseGeometry()
+>>> Base_g.integer_validator("my_int", 12)
+>>> Base_g.integer_validator("height", 87)
+>>> Base_g.integer_validator("width", 999)
+>>> Base_g.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+>>> Base_g.integer_validator("width", -12)
+Traceback (most recent call last):
+...
+ValueError: width must be greater than 0
+>>> Base_g.integer_validator("height", -121)
+Traceback (most recent call last):
+...
+ValueError: height must be greater than 0
+>>> Base_g.integer_validator("height", None)
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> Base_g.integer_validator("height", "awe")
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> Base_g.integer_validator("height", "50")
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> Base_g.integer_validator("height", [1, 6, 7])
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> Base_g.integer_validator("heigh", True)
+>>> Base_g.integer_validator("lis", True)
+>>> Base_g.integer_validator("lis", False)
+Traceback (most recent call last):
+...
+ValueError: lis must be greater than 0
+>>> Base_g.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> Base_g.integer_validator("lis")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> Base_g.integer_validator("height", (1, 6, 7))
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
+>>> Base_g.integer_validator("height", {"awe": 1})
+Traceback (most recent call last):
+...
+TypeError: height must be an integer
