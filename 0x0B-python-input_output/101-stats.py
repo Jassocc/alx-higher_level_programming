@@ -6,47 +6,37 @@ reads line by line and computes the metrics
 import sys
 
 
-def print_stats(total_size, status_codes):
+def print_stats(size, status_codes):
     """
     prints statistics
     """
-    try:
-        print("File size: {}".format(total_size))
-        for status_code in sorted(status_codes.keys()):
-            print("{}: {}".format(status_code, status_codes[status_code]))
-    except BrokenPipeError:
-        pass
+    print("File size: {}".format(size))
+    for status_code, val in sorted(status_codes.items()):
+        if val:
+            print("{:s}: {:d}".format(status_code, val))
 
-    def parse_line(line):
-        """
-        pareses lines
-        """
-        parts = line.split()
-        if len(parts) < 9:
-            return None
-        status_code = parts[-2]
-        file_size = parts[-1]
-        return status_code, int(file_size)
 
-    def update_stats(status_code, file_Size, total_size, status_codes):
-        """
-        updates stats
-        """
-        total_size += file_size
-        if status_code in status_codes:
-            status_codes[status_code] += 1
-        return total_size
-    total_size = 0
-    status_codes = {}
+def parse_line():
+    """
+    pareses lines
+    """
+    size = 0
+    li = 0
+    status_codes = {"200": 0, "301": 0, "400": 0, "401": 0,
+                    "403": 0, "404": 0, "405": 0, "500": 0}
     try:
-        for a, line in enumerate(sys.stdin, start=1):
-            line = line.strip()
-            pars = parse_line(line)
-            if pars is not None:
-                status_code, file_size = pars
-                total_size = update_stats(status_code,
-                                          file_size, total_Size, status_codes)
-            if a % 10 == 0:
-                print_stats(total_size, status_codes)
+        for line in sys.stdin:
+            fi = list(map(str, line.strip().split(" ")))
+            size += int(fi[-1])
+            if fi[-2] in status_codes:
+                status_codes[fi[-2]] += 1
+            li += 1
+            if li % 10 == 0:
+                print_stats(size, status_codes)
     except KeyboardInterrupt:
-        print_stats(total_size, status_codes)
+        print_stats(size, status_codes)
+        raise
+    print_stats(size, status_codes)
+
+
+parse_line()
