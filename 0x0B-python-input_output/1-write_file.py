@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Contains a module that wrtes a 
+Contains a module that wrtes a
 string to a text file
 """
 
