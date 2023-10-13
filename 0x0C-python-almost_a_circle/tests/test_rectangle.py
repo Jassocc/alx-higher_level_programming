@@ -39,6 +39,27 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.x, 300)
         self.assertEqual(r1.y, 400)
 
+    def test_validation(self):
+        """
+        tests validations
+        """
+        with self.assertRaises(TypeError):
+            r = Rectangle("10", 20, 30, 40, 50)
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, "20", 30, 40, 50)
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 20, "30", 40, 50)
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, 20, 30, "40", 50)
+        with self.assertRaises(ValueError):
+            r = Rectangle(-10, 20, 30, 40, 50)
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, -20, 30, 40, 50)
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 20, -30, 40, 50)
+        with self.assertRaises(ValueError):
+            r = Rectangle(10, 20, 30, -40, 50)
+
 
 if __name__ == '__main__':
     unittest.main()
