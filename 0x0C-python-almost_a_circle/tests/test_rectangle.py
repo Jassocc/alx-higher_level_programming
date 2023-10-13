@@ -1,6 +1,6 @@
 import unittest
 from models.rectangle import Rectangle
-import io
+from io import StringIO
 from unittest.mock import patch
 """
 test nmodule to test the class Rectangle
@@ -72,11 +72,22 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(res1.area(), 25)
         self.assertEqual(res2.area(), 21)
         self.assertEqual(res3.area(), 24)
-    
-    def tes_display(self):
+
+    def test_display(self):
         """
         test the didsplay
         """
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            r1 = Rectangle(4, 6, 2, 1)
+            r1.display()
+            expected_output = '\n  ####\n'\
+                              '  ####\n  ####\n  ####\n  ####\n  ####\n'
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            r2 = Rectangle(2, 2, 1, 0)
+            r2.display()
+            expected_output = ' ##\n ##\n'
+            self.assertEqual(mock_stdout.getvalue(), expected_output)
 
 
 if __name__ == '__main__':
