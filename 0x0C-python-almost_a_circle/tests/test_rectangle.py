@@ -1,5 +1,7 @@
 import unittest
 from models.rectangle import Rectangle
+import io
+from unittest.mock import patch
 """
 test nmodule to test the class Rectangle
 """
@@ -70,6 +72,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(res1.area(), 25)
         self.assertEqual(res2.area(), 21)
         self.assertEqual(res3.area(), 24)
+    
+    def tes_display(self):
+        """
+        test the didsplay
+        """
 
 
 if __name__ == '__main__':

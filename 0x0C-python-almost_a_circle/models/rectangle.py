@@ -99,3 +99,12 @@ class Rectangle(Base):
         """
         result = self.__width * self.__height
         return result
+
+    def display(self):
+        """
+        prints to stdout
+        """
+        for i in range(self.__y):
+            print()
+        for i in range(self.__height):
+            print(' ' * self.__x + '#' * self.__width)
