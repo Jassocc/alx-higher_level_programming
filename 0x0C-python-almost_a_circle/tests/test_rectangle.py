@@ -3,6 +3,7 @@ from models.rectangle import Rectangle
 from io import StringIO
 from unittest.mock import patch
 from models.base import Base
+import sys
 """
 test nmodule to test the class Rectangle
 """
@@ -92,6 +93,7 @@ class TestRectangle(unittest.TestCase):
             r2.display()
             expected_output = ' ##\n ##\n'
             self.assertEqual(mock_stdout.getvalue(), expected_output)
+    
     def test_str(self):
         """
         tests the str to print the rectangle info
@@ -101,6 +103,27 @@ class TestRectangle(unittest.TestCase):
 
         r = Rectangle(2, 10, 5)
         self.assertEqual(str(r), "[Rectangle] (1) 5/0 - 2/10")
+
+    def test_dislpay1(self):
+        """
+        tests the updated display
+        """
+        r1 = Rectangle(2, 3, 2, 2)
+        r2 = Rectangle(3, 2, 1, 0)
+
+        with StringIO() as mock_stdout:
+            sys.stdout = mock_stdout
+            r1.display()
+            output = mock_stdout.getvalue()
+            self.assertEqual(output.strip(), "##\n  ##\n  ##")
+            sys.stdout = sys.__stdout__
+
+        with StringIO() as mock_stdout:
+            sys.stdout = mock_stdout
+            r2.display()
+            output = mock_stdout.getvalue()
+            self.assertEqual(output.strip(), "###\n ###")
+            sys.stdout = sys.__stdout__
 
 
 if __name__ == '__main__':
