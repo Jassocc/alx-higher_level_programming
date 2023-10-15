@@ -2,6 +2,7 @@ import unittest
 from models.rectangle import Rectangle
 from io import StringIO
 from unittest.mock import patch
+from models.base import Base
 """
 test nmodule to test the class Rectangle
 """
@@ -11,6 +12,9 @@ class TestRectangle(unittest.TestCase):
     """
     Test for the rectangle
     """
+    def setUp(self):
+        Base._Base__nb_objects = 0
+
     def test_constructor(self):
         """
         tests constructor
@@ -88,6 +92,15 @@ class TestRectangle(unittest.TestCase):
             r2.display()
             expected_output = ' ##\n ##\n'
             self.assertEqual(mock_stdout.getvalue(), expected_output)
+    def test_str(self):
+        """
+        tests the str to print the rectangle info
+        """
+        r = Rectangle(10, 20, 30, 40, 50)
+        self.assertEqual(str(r), "[Rectangle] (50) 30/40 - 10/20")
+
+        r = Rectangle(2, 10, 5)
+        self.assertEqual(str(r), "[Rectangle] (1) 5/0 - 2/10")
 
 
 if __name__ == '__main__':
