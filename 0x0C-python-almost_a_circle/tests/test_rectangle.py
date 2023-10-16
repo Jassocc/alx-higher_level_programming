@@ -125,12 +125,24 @@ class TestRectangle(unittest.TestCase):
             self.assertEqual(output.strip(), "###\n ###")
             sys.stdout = sys.__stdout__
 
+    def test_update_with_args(self):
+        """
+        tests the update with args
+        """
+        r = Rectangle(1, 1, 1, 1, 1)
+        r.update(2, 3, 4, 5, 6)
+        self.assertEqual(r.id, 2)
+        self.assertEqual(r.width, 3)
+        self.assertEqual(r.height, 4)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 6)
+
     def test_update_with_kwargs(self):
         """
         tests the update with kwargs
         """
         r = Rectangle(1, 1, 1, 1, 1)
-        r.update(2, 3, 4, 5, 6)
+        r.update(id=2, width=3, height=4, x=5, y=6)
         self.assertEqual(r.id, 2)
         self.assertEqual(r.width, 3)
         self.assertEqual(r.height, 4)
