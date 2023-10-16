@@ -1,13 +1,13 @@
 #!/usr/bin/python3
+"""
+test cases for the class created in
+the modelf folder
+"""
 import os
 import unittest
 import json
 from models.base import Base
 from models.rectangle import Rectangle
-"""
-test cases for the class created in
-the modelf folder
-"""
 
 
 class TestBase(unittest.TestCase):

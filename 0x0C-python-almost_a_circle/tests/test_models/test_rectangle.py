@@ -1,12 +1,13 @@
+#!/usr/bin/python3
+"""
+test nmodule to test the class Rectangle
+"""
 import unittest
 from models.rectangle import Rectangle
 from io import StringIO
 from unittest.mock import patch
 from models.base import Base
 import sys
-"""
-test nmodule to test the class Rectangle
-"""
 
 
 class TestRectangle(unittest.TestCase):

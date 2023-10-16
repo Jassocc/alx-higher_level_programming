@@ -1,8 +1,9 @@
-import unittest
-from models.square import Square
+#!/usr/bin/python3
 """
 test casses for the class Square
 """
+import unittest
+from models.square import Square
 
 
 class TestSquare(unittest.TestCase):

@@ -5,6 +5,7 @@ Attributes and a class constructor
 """
 import csv
 import json
+import turtle
 
 
 class Base:
@@ -116,3 +117,37 @@ class Base:
                 dc = cls.create(**obj)
                 objs.append(dc)
         return objs
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """
+        opens a window and draws rectangles and squares
+        """
+        screen = turtle.Screen()
+        screen.bgcolor("lightblue")
+        screen.title("Shapes Drawer")
+
+        pen = turtle.Turtle()
+        pen.pensize(3)
+        pen.speed(2)
+
+        for rect in list_rectangle:
+            pen.penup()
+            pen.goto(rect.x, rect.y)
+            pendown()
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+            pen.forward(rect.width)
+            pen.left(90)
+            pen.forward(rect.height)
+            pen.left(90)
+        for square in list_squares:
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            for b in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+        turtle.done()
