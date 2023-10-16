@@ -156,9 +156,20 @@ class TestBase(unittest.TestCase):
         json_string = '[{"id": 89, "width": 10, "height": 4}, \
                 {"id": 7, "width": 1, "height": 7}]'
         res = Rectangle.from_json_string(json_string)
-        expected = [{'id': 89, 'width': 10, 'height': 4}, \
-                {'id': 7, 'width': 1, 'height': 7}]
+        expected = [{'id': 89, 'width': 10, 'height': 4},
+                    {'id': 7, 'width': 1, 'height': 7}]
         self.assertEqual(res, expected)
+
+    def test_create_rectangle(self):
+        """
+        tests the create ffunction
+        """
+        r1 = Rectangle(3, 5, 1)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertIsInstance(r2, Rectangle)
+        self.assertEqual(r1.to_dictionary(), r2.to_dictionary())
+        self.assertIsNot(r1, r2)
 
 
 if __name__ == '__main__':
