@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import unittest
+import json
 from models.base import Base
+from models.rectangle import Rectangle
 """
 test cases for the class created in
 the modelf folder
@@ -102,6 +104,16 @@ class TestBase(unittest.TestCase):
         self.assertNotEqual(ba1.id, ba2.id)
         self.assertNotEqual(ba2.id, ba3.id)
         self.assertNotEqual(ba1.id, ba3.id)
+
+    def test_to_json_string(self):
+        """
+        tests to see if json rep is correct
+        """
+        r1 = Rectangle(10, 7, 2, 8)
+        dictionary = r1.to_dictionary()
+        json_dict = Base.to_json_string([dictionary])
+        expected_json = json.dumps([dictionary])
+        self.assertEqual(json_dict, expected_json)
 
 
 if __name__ == '__main__':
