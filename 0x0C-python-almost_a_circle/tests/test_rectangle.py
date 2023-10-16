@@ -93,7 +93,7 @@ class TestRectangle(unittest.TestCase):
             r2.display()
             expected_output = ' ##\n ##\n'
             self.assertEqual(mock_stdout.getvalue(), expected_output)
-    
+
     def test_str(self):
         """
         tests the str to print the rectangle info
@@ -124,6 +124,18 @@ class TestRectangle(unittest.TestCase):
             output = mock_stdout.getvalue()
             self.assertEqual(output.strip(), "###\n ###")
             sys.stdout = sys.__stdout__
+
+    def test_update_with_kwargs(self):
+        """
+        tests the update with kwargs
+        """
+        r = Rectangle(1, 1, 1, 1, 1)
+        r.update(2, 3, 4, 5, 6)
+        self.assertEqual(r.id, 2)
+        self.assertEqual(r.width, 3)
+        self.assertEqual(r.height, 4)
+        self.assertEqual(r.x, 5)
+        self.assertEqual(r.y, 6)
 
 
 if __name__ == '__main__':
