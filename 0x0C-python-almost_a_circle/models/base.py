@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-import json
 """
 Classs known as base with different
 Attributes and a class constructor
 """
+import csv
+import json
 
 
 class Base:
@@ -79,3 +80,39 @@ class Base:
                 return inst
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        csv serializer
+        """
+        filename = cls.__name__ + ".csv"
+        with open(filename, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
+                if cls.__name__ == "Rectangle":
+                    row = [obj.id, obj.width, obj.height, obj.x, obj.y]
+                elif cls.__name__ == "Square":
+                    row = [obj.id, obj.size, obj.x, obj.y]
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        deserialize a csv file
+        """
+        filename = cls.__name__ + ".csv"
+        objs = []
+        with open(filename, mode='r', newline='') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if cls.__name__ == "Rectangle":
+                    obj = {"id": int(row[0]), "width": int(row[1]),
+                           "height": int(row[2]), "x": int(row[3]),
+                           "y": int(row[4])}
+                elif cls.__name__ == "Square":
+                    obj = {"id": int(row[0]), "size": int(row[1]),
+                           "x": int(row[2]), "y": int(row[3])}
+                dc = cls.create(**obj)
+                objs.append(dc)
+        return objs
