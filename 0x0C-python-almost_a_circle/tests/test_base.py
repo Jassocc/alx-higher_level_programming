@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 import unittest
 import json
 from models.base import Base
@@ -114,6 +115,23 @@ class TestBase(unittest.TestCase):
         json_dict = Base.to_json_string([dictionary])
         expected_json = json.dumps([dictionary])
         self.assertEqual(json_dict, expected_json)
+
+    def test_save_to_file(self):
+        """
+        tests save to file fucntion
+        """
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r") as file:
+            cont = file.read()
+            expect = json.dumps([r1.to_dictionary(),
+                                 r2.to_dictionary()])
+            self.assertEqual(cont, expect)
+
+        os.remove("Rectangle.json")
 
 
 if __name__ == '__main__':
