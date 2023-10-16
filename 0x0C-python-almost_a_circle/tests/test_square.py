@@ -48,6 +48,14 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(s.width, 8)
         self.assertEqual(s.height, 8)
 
+    def test_size_prop_invalid_value(self):
+        """
+        checks if type error is raised with invalid value
+        """
+        s1 = Square(5)
+        with self.assertRaises(TypeError):
+            s1.size = "9"
+
 
 if __name__ == '__main__':
     unittest.main()
