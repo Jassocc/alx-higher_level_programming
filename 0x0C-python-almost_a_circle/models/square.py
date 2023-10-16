@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-from models.rectangle import Rectangle
 """
 class Square
 inherits from The Rectangle class
 also has its own attributes
 """
+from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
