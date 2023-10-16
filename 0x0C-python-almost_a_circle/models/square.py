@@ -2,7 +2,7 @@
 from models.rectangle import Rectangle
 """
 class Square
-inherits from The Rectangle class 
+inherits from The Rectangle class
 also has its own attributes
 """
 
@@ -40,3 +40,20 @@ class Square(Rectangle):
         return "[Square] ({:d}) {:d}/{:d} - {:d}".format(
                 self.id, self.x, self.y, self.size)
 
+    def update(self, *args, **kwargs):
+        """
+        update to assign attributes with args and kwargs
+        """
+        if args:
+            attributes = ['id', 'size', 'x', 'y']
+            for i, value in enumerate(args):
+                setattr(self, attributes[i], value)
+        else:
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'size' in kwargs:
+                self.size = kwargs['size']
+            if 'x' in kwargs:
+                self.x = kwargs['x']
+            if 'y' in kwargs:
+                self.y = kwargs['y']

@@ -9,6 +9,7 @@ class TestSquare(unittest.TestCase):
     """
     class that contains test cases
     """
+
     def test_init(self):
         """
         test initializer
@@ -55,6 +56,42 @@ class TestSquare(unittest.TestCase):
         s1 = Square(5)
         with self.assertRaises(TypeError):
             s1.size = "9"
+
+    def test_update_with_args(self):
+        """
+        tests if update with args work
+        """
+        s2 = Square(10, 20, 30, 40)
+
+        s2.update(20)
+        self.assertEqual(str(s2), "[Square] (20) 20/30 - 10")
+
+        s2.update(5, 10)
+        self.assertEqual(str(s2), "[Square] (5) 20/30 - 10")
+
+        s2.update(100, 200, 300)
+        self.assertEqual(str(s2), "[Square] (100) 300/30 - 200")
+
+        s2.update(50, 60, 70, 80)
+        self.assertEqual(str(s2), "[Square] (50) 70/80 - 60")
+
+    def test_update_with_kwargs(self):
+        """
+        tests if the update works with kwargs
+        """
+        s2 = Square(10, 20, 30, 40)
+
+        s2.update(x=50)
+        self.assertEqual(str(s2), "[Square] (40) 50/30 - 10")
+
+        s2.update(size=20, y=30)
+        self.assertEqual(str(s2), "[Square] (40) 50/30 - 20")
+
+        s2.update(size=100, id=200, y=300)
+        self.assertEqual(str(s2), "[Square] (200) 50/300 - 100")
+
+        s2.update(size=50, id=60, x=70, y=80)
+        self.assertEqual(str(s2), "[Square] (60) 70/80 - 50")
 
 
 if __name__ == '__main__':
