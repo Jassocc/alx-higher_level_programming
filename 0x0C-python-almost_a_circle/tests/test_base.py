@@ -133,6 +133,33 @@ class TestBase(unittest.TestCase):
 
         os.remove("Rectangle.json")
 
+    def test_from_json_empty_string(self):
+        """
+        tests empty json string
+        """
+        json_string = ""
+        res = Rectangle.from_json_string(json_string)
+        self.assertEqual(res, [])
+
+    def test_from_json_string_none(self):
+        """
+        tests None jsonm string
+        """
+        json_string = None
+        res = Rectangle.from_json_string(json_string)
+        self.assertEqual(res, [])
+
+    def test_from_json_string_valid(self):
+        """
+        tests json string with valid value
+        """
+        json_string = '[{"id": 89, "width": 10, "height": 4}, \
+                {"id": 7, "width": 1, "height": 7}]'
+        res = Rectangle.from_json_string(json_string)
+        expected = [{'id': 89, 'width': 10, 'height': 4}, \
+                {'id': 7, 'width': 1, 'height': 7}]
+        self.assertEqual(res, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
