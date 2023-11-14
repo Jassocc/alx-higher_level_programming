@@ -1,3 +1,3 @@
 -- import database top this table
 SELECT city, AVG(value) AS avg_temp FROM temperatures where month = 7 OR
-month = 8 GROUP BY city ORDER BY avg_temp DESC LIMIT 3
+month = 8 GROUP BY city ORDER BY avg_temp DESC LIMIT 3;
