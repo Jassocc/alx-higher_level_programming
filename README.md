@@ -1,1 +1,1 @@
-This is a readme for the alx-higher level programming repository
+Readme for the project 0x13. JavaScript - Objects, Scopes and Closures
