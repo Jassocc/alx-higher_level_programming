@@ -4,6 +4,7 @@ const apiURL = process.argv[2];
 request.get(apiURL, (error, response, body) => {
   if (error) {
     console.error(`Error: ${error}`);
+    process.exit(1);
   }
   const filmsData = JSON.parse(body);
   let wedgeMovies = 0;
