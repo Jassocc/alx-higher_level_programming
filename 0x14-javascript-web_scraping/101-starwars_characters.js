@@ -26,7 +26,6 @@ request.get(apiURL, (error, response, body) => {
         setTimeout(resolve, 100);
       }));
     }, Promise.resolve());
-
   } catch (parseError) {
     console.error('Error');
     process.exit(1);
